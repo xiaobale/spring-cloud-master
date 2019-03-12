@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: bus-config-server
+  cloud: 
+    config:
+      server:
+        git:
+          uri: https://github.com/baihezhuo/architecture-config-repo  ##git地址
+    stream:
+      kafka: 
+        binder:
+          zk-nodes: 192.168.11.111:2181,192.168.11.112:2181,192.168.11.113:2181
+          brokers: 192.168.11.51:9092
+server:
+  context-path: /
+  port: 4000
+  
+#关闭验证，调用本地配置中心的地址进行配置的刷新:http://localhost:4000/bus/refresh
+management:
+  security:
+    enabled: false

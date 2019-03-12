@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div>
+		<!-- # 直接访问userservice服务进行内部上传  -->
+		<form action="http://localhost:7002/upload" enctype="multipart/form-data" method="post">
+			<input type="file" name="file"/><br/>
+			<input type="submit" value="普通上传">
+		</form>
+	</div>
+	<div>
+		<!-- #通过zuul进行上传文件  -->
+		<form action="http://localhost:5001/user-service/upload" enctype="multipart/form-data" method="post">
+			<input type="file" name="file"/><br/>
+			<input type="submit" value="通过zuul网关进行上传">
+		</form>
+	</div>	
+	<div>
+		<!-- #上传文件需要在url地址添加/zuul/*前缀 -->
+		<form action="http://localhost:5001/zuul/user-service/upload" enctype="multipart/form-data" method="post">
+			<input type="file" name="file"/><br/>
+			<input type="submit" value="绕过zuul的dispatchServlet上传">
+		</form>
+	</div>
+</body>
+</html>

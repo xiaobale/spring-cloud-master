@@ -1,0 +1,22 @@
+##http://localhost:4000/{application}/{profile}/{label}
+spring:
+  application:
+    name: evn
+  cloud:
+    config:
+      uri: http://localhost:4001/
+      profile: dev
+      label: master
+    stream:
+      kafka: 
+        binder:
+          zk-nodes: 192.168.11.111:2181,192.168.11.112:2181,192.168.11.113:2181
+          brokers: 192.168.11.51:9092     
+server:
+  context-path: /
+  port: 7001
+
+management:
+  security:
+    enabled: false
+    

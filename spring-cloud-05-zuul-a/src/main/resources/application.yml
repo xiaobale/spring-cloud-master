@@ -1,0 +1,77 @@
+spring:
+  application:
+    name: zuul-service
+  ##启用retry机制
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+  http:
+    encoding:
+      charset: UTF-8
+    multipart: 
+      enabled: true
+      file-size-threshold: 10
+      max-file-size: 10MB
+      max-request-size: 20MB
+
+            
+server:
+  context-path: /
+  port: 5001
+  
+eureka: 
+  client:
+    service-url:
+      defaultZone: http://eureka1:8001/eureka
+      
+zuul:
+  routes:
+    api-order:
+      path: /order-service/**
+      service-id: order-service  
+    api-user:
+      path: /user-service/**
+      service-id: user-service      
+
+
+
+##设置断路器的超时时间
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 50000    
+
+##全局请求的负载均衡和重试配置
+
+##The Hystrix timeout of 30000ms for the command order-service 
+##is set lower than the combination of the Ribbon read and connect timeout, 48000ms
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 3000
+  OkToRetryOnAllOperations: true
+  MaxAutoRetriesNextServer: 1
+  MaxAutoRetries: 2  
+
+##全局的代理配置
+feign:
+  hystrix: 
+    enabled: true
+  compression:
+    request:
+      min-request-size: 2048
+      mime-types:
+        - text/html, application/xml, application/json    
+   
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

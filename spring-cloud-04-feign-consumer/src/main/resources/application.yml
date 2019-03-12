@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: feign-consumer
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+    
+server:
+  context-path: /
+  port: 7003
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka1:8001/eureka
+  
+feign:
+  hystrix: 
+    enabled: true
+  compression:
+    request:
+      min-request-size: 2048
+      mime-types:
+        - text/html, application/xml, application/json    
+
+##设置断路器的超时时间
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 10000 
+
+##微服务的请求配置
+provider-service: 
+  ConnectTimeout: 10000
+  ReadTimeout: 3000 
+  ribbon: 
+    OkToRetryOnAllOperations: true ##对所有的请求都进行重试
+    MaxAutoRetriesNextServer: 1 ##切换实例的次数
+    MaxAutoRetries: 2    ##对当前实例重试的次数
+  
+
+
+
+
+

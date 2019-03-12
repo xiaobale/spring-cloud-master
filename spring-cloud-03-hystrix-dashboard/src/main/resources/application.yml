@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: hystrix-dashboard
+    
+server:
+  context-path: /
+  port: 2001
+  
+#配置注册服务发现中心的地址  
+eureka: 
+  client:
+    service-url: 
+      defaultZone: http://eureka1:8001/eureka/
+      
+  
+
+
+
+  

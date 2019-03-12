@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: hystrix-turbine
+server:
+  port: 3000
+management:
+  port: 3001
+turbine: 
+  app-config: consumer-service   #指定需要收集监控信息的服务名:
+  cluster-name-expression: "'default'"
+  combine-host-port: true
+eureka: 
+  client:
+    service-url: 
+      defaultZone: http://eureka1:8001/eureka/  

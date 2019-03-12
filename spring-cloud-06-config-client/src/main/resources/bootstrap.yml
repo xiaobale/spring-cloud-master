@@ -1,0 +1,18 @@
+##http://localhost:4000/{application}/{profile}/{label}
+spring:
+  application:
+    name: evn
+  cloud:
+    config:
+      uri: http://localhost:4000/
+      profile: dev
+      label: master
+ 
+     
+server:
+  context-path: /
+  port: 7001
+
+management:
+  security:
+    enabled: false

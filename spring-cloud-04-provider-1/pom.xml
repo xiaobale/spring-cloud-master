@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.bfxy</groupId>
+    <artifactId>spring-cloud-master</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>spring-cloud-04-provider-1</artifactId>
+  <name>spring-cloud-04-provider-1</name>
+  <description>spring-cloud-04-provider-1</description>
+  
+  <dependencies>
+	  	<dependency>
+	  		<groupId>org.springframework.boot</groupId>
+	  		<artifactId>spring-boot-starter-web</artifactId>
+	  	</dependency>
+	  	<!-- 标识这个工程是一个服务，需要引入此jar -->
+  		<dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+  		</dependency>
+  		<!-- 动态刷新的一个模块jar -->
+  		<dependency>
+  			<groupId>org.springframework.boot</groupId>
+  			<artifactId>spring-boot-starter-actuator</artifactId>
+  		</dependency>
+  </dependencies>
+  
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>org.springframework.cloud</groupId>
+  			<artifactId>spring-cloud-dependencies</artifactId>
+  			<!-- <version>Dalston.SR5</version>  -->
+  			<version>Edgware.SR4</version>
+  			<!-- <version>Finchley.SR1</version>  -->
+  			<type>pom</type>
+  			<scope>import</scope>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>  
+  
+  
+  <build>
+  		<finalName>spring-cloud-04-provider-1</finalName>
+	  	<plugins>
+	  		<plugin>
+	  			<groupId>org.springframework.boot</groupId>
+	  			<artifactId>spring-boot-maven-plugin</artifactId>
+	  			<configuration>
+	  				<mianClass>com.bfxy.springcloud.Application</mianClass>
+	  			</configuration>
+	  		</plugin>
+	  	</plugins>
+  </build>    
+  
+  
+  
+  
+</project>
